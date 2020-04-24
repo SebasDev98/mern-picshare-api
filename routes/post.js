@@ -7,7 +7,7 @@ const Comment = require("./../models/Comment");
 const View = require("./../models/View");
 const Like = require("./../models/Like");
 const validExtensions = ["png", "jpg", "jpeg"];
-
+const path = require("path");
 const authUtil = require("./../utils/auth");
 postRouter.get("/", async (req, res) => {
   try {
@@ -68,8 +68,8 @@ postRouter.post("/", authentication.checkToken, (req, res) => {
   }
 
   const newFileName = `${new Date().getTime().toString()}-${file.name}`;
-
-  file.mv(`./uploads/${newFileName}`, async (error) => {
+  const filePath = `./../uploads/${newFileName}`;
+  file.mv(path.resolve(__dirname, filePath), async (error) => {
     if (error) return res.status(500).send(error);
 
     let post = new Post({
