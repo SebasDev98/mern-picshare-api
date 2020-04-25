@@ -6,8 +6,6 @@ process.env.NODE_ENV = process.env.NODE_ENV || "dev";
 
 process.env.JWT_EXPIRES_IN = 60 * 60 * 24 * 10;
 
-process.env.JWT_SECRET = process.env.JWT_SECRET;
-
 let dbURL;
 
 if (process.env.NODE_ENV === "dev") {

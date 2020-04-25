@@ -5,7 +5,7 @@ const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
+const path = require("path");
 const whitelist = ["http://localhost:3000", "http://example2.com"];
 const corsOptions = {
   origin: function (origin, callback) {
@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: "/tmp/",
+    tempFileDir: path.resolve(__dirname, "./../uploads/"),
   })
 );
 // parse application/json
