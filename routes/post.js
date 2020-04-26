@@ -76,7 +76,6 @@ postRouter.post("/", authentication.checkToken, (req, res) => {
       text: body.text,
       authorName: req.user.userName,
       imageId: newFileName,
-      imageName: newFileName,
       author: req.user._id,
     });
 
